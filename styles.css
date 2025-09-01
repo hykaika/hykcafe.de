@@ -1,0 +1,579 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-bg-color: #0a0a1a;
+    --primary-color: #ff4d7c;
+    --secondary-color: #6e3cff;
+    --accent-color: #39f5f9;
+    --text-color: #ffffff;
+    --dark-purple: #1a0639;
+    --deep-blue: #0f1c3f;
+}
+
+body {
+    color: var(--text-color);
+    background: var(--main-bg-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    font-family: 'Exo 2', sans-serif;
+}
+
+/* Start Animation */
+#start-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    transition: opacity 1s ease-out;
+}
+
+.logo-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: var(--primary-color);
+    animation: spin 1.5s linear infinite;
+}
+
+.logo-circle:nth-child(2) {
+    border-top-color: var(--secondary-color);
+    animation-direction: reverse;
+    animation-duration: 2s;
+}
+
+.logo-circle:nth-child(3) {
+    border-top-color: var(--accent-color);
+    animation-duration: 2.5s;
+}
+
+.logo-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-color);
+    text-shadow: 0 0 15px var(--primary-color);
+    z-index: 2;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Partikel-Hintergrund */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Navigationsleiste */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    z-index: 100;
+    background: rgba(10, 10, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 77, 124, 0.3);
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    margin-right: 10px;
+    color: var(--accent-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hauptinhalt */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 20px;
+    z-index: 1;
+    position: relative;
+}
+
+/* Hero Bereich */
+.hero {
+    text-align: center;
+    padding: 100px 20px 80px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulsate 3s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 77, 124, 0.5);
+}
+
+@keyframes pulsate {
+    0%, 100% { 
+        text-shadow: 0 0 20px rgba(255, 77, 124, 0.5);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 40px rgba(255, 77, 124, 0.8), 0 0 60px rgba(110, 60, 255, 0.6);
+        transform: scale(1.02);
+    }
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px var(--accent-color);
+    font-weight: 600;
+}
+
+.typing-text {
+    font-size: 1.5rem;
+    color: #d0d0f0;
+    margin-bottom: 50px;
+    min-height: 60px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    margin: 20px 0;
+    box-shadow: 0 0 30px rgba(255, 77, 124, 0.6);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid transparent;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 77, 124, 0.9);
+    border-color: var(--accent-color);
+}
+
+.cta-button i {
+    margin-right: 15px;
+}
+
+/* Discord Bereich */
+.discord-section {
+    background: linear-gradient(135deg, rgba(26, 6, 57, 0.8), rgba(15, 28, 63, 0.8));
+    border-radius: 20px;
+    padding: 60px 40px;
+    margin: 80px 0;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(110, 60, 255, 0.4);
+    border: 1px solid var(--secondary-color);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.discord-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(57, 245, 249, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: var(--accent-color);
+    text-shadow: 0 0 15px var(--accent-color);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.discord-description {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+    line-height: 1.8;
+    color: #d0d0f0;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 60px 0;
+    perspective: 1000px;
+}
+
+.feature {
+    background: rgba(30, 31, 68, 0.6);
+    border-radius: 20px;
+    padding: 30px;
+    width: 280px;
+    border: 1px solid var(--secondary-color);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transform-style: preserve-3d;
+}
+
+.feature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 77, 124, 0.2), rgba(110, 60, 255, 0.2));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.feature:hover {
+    transform: translateY(-15px) scale(1.03) rotateY(5deg);
+    box-shadow: 0 0 30px var(--secondary-color);
+}
+
+.feature:hover::before {
+    opacity: 1;
+}
+
+.feature i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px var(--accent-color);
+}
+
+.feature h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.feature p {
+    color: #d0d0f0;
+    line-height: 1.6;
+}
+
+.discord-image {
+    max-width: 700px;
+    width: 100%;
+    border-radius: 20px;
+    margin: 50px auto;
+    display: block;
+    box-shadow: 0 0 40px rgba(110, 60, 255, 0.7);
+    border: 2px solid var(--secondary-color);
+    transition: all 0.4s ease;
+}
+
+.discord-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 50px rgba(110, 60, 255, 0.9);
+}
+
+/* Soziale Medien Bereich */
+.social-section {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+}
+
+.social-title {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: var(--accent-color);
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 15px var(--accent-color);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(26, 6, 57, 0.8), rgba(15, 28, 63, 0.8));
+    color: var(--text-color);
+    font-size: 2.8rem;
+    transition: all 0.4s ease;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(255, 77, 124, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.social-icons a:hover {
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 77, 124, 0.8);
+    color: white;
+}
+
+.social-icons a:hover::before {
+    opacity: 1;
+}
+
+/* Links Bereich */
+.links {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px var(--accent-color);
+    position: relative;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.links a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    border-color: var(--primary-color);
+    background: rgba(255, 77, 124, 0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    color: #d0d0f0;
+    border-top: 1px solid rgba(255, 77, 124, 0.3);
+    font-size: 1.1rem;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.6rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .nav-links {
+        margin-top: 15px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .cta-button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+    
+    .discord-description {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .social-icons a {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+    
+    .links {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .typing-text {
+        font-size: 1.1rem;
+    }
+    
+    .feature {
+        width: 100%;
+    }
+    
+    .social-icons a {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+}
